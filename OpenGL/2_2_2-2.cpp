@@ -14,7 +14,7 @@ void RenderScene(void) {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glViewport(0, 0, 640, 480);
-	glOrtho(1, -1, 1, -1, 1, -1); // 뷰포트 안에서 왼아래 : (-1, -1) / 오위 : (1, 1) 로 좌표계 설정
+	glOrtho(1, -1, 1, -1, 1, -1); // 뷰포트 안에서 제일왼쪽: 1, 제일오른쪽: -1, 제일밑: 1, 제일위: -1
 	// 원래 => glOrtho(-1, 1, -1, 1, 1, -1)
 	// 설명
 	// : 아래 glRectf함수에서대로라면 1사분면에 빨간사각형이 그려져야됌
