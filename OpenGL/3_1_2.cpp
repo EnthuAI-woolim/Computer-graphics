@@ -1,4 +1,4 @@
-#define GL_SILENCE_DEPRECATION
+ï»¿#define GL_SILENCE_DEPRECATION
 
 #include <GL/glut.h>
 #include <iostream>
@@ -47,7 +47,7 @@ void RenderScene(void) {
 
 void SetupRC(void) {
     cout << "SetupRC" << endl;
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // È­¸éÀ» ¾î¶²»öÀ¸·Î Áö¿ïÁö °áÁ¤
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // í™”ë©´ì„ ì–´ë–¤ìƒ‰ìœ¼ë¡œ ì§€ìš¸ì§€ ê²°ì •
 }
 
 void ChangeSize(GLsizei w, GLsizei h) {
@@ -57,7 +57,7 @@ void ChangeSize(GLsizei w, GLsizei h) {
     GLint wSize = 100;
     GLfloat aspectRatio;
 
-    // 0À¸·Î ³ª´©´Â ¿À·ù ¹æÁö
+    // 0ìœ¼ë¡œ ë‚˜ëˆ„ëŠ” ì˜¤ë¥˜ ë°©ì§€
     if (h == 0) h = 1;
 
     glViewport(0, 0, w, h);
@@ -68,11 +68,11 @@ void ChangeSize(GLsizei w, GLsizei h) {
     aspectRatio = (GLfloat)w / (GLfloat)h;
 
     if (w <= h) {
-        // ¼¼·Î°¡ ´õ ±æ¸é yÃà È®Àå
+        // ì„¸ë¡œê°€ ë” ê¸¸ë©´ yì¶• í™•ìž¥
         glOrtho(-wSize, wSize, -wSize / aspectRatio, wSize / aspectRatio, -100, 100);
     }
     else {
-        // °¡·Î°¡ ´õ ±æ¸é xÃà È®Àå
+        // ê°€ë¡œê°€ ë” ê¸¸ë©´ xì¶• í™•ìž¥
         glOrtho(-wSize * aspectRatio, wSize * aspectRatio, -wSize, wSize, -100, 100);
     }
 
@@ -89,28 +89,41 @@ int main(int argc, char** argv) {
 
     SetupRC();
 
-    // [°´Ã¼ ¼³Á¤ ¹× ·»´õ¸µ] µµÇü »ö»ó, À§Ä¡, ÇüÅÂ µîÀ» ¼³Á¤ÇÏ°í È­¸é¿¡ ±×¸®´Â ÇÔ¼ö µî·Ï
+    // [ê°ì²´ ì„¤ì • ë° ë Œë”ë§] ë„í˜• ìƒ‰ìƒ, ìœ„ì¹˜, í˜•íƒœ ë“±ì„ ì„¤ì •í•˜ê³  í™”ë©´ì— ê·¸ë¦¬ëŠ” í•¨ìˆ˜ ë“±ë¡
     glutDisplayFunc(RenderScene);
 
-    // [¹è°æ ¹× Åõ¿µ ¼³Á¤] Ã¢ Å©±â º¯°æ ½Ã È£ÃâµÇ¾î ½Ã¾ß°¢°ú ºñÀ²¿¡ ¸ÂÃç Åõ¿µ Çà·Ä ¹× ºäÆ÷Æ® ¼³Á¤
+    // [ë°°ê²½ ë° íˆ¬ì˜ ì„¤ì •] ì°½ í¬ê¸° ë³€ê²½ ì‹œ í˜¸ì¶œë˜ì–´ ì‹œì•¼ê°ê³¼ ë¹„ìœ¨ì— ë§žì¶° íˆ¬ì˜ í–‰ë ¬ ë° ë·°í¬íŠ¸ ì„¤ì •
     glutReshapeFunc(ChangeSize);
 
     glutMainLoop();
 }
 
 /*
-¼¼·Î°¡ ´õ ±æ¸é yÃà È®Àå
-Ä«¸Þ¶ó´Â ±âº»ÀûÀ¸·Î z=0¿¡¼­ -zÃàÀ¸·Î ¹Ù¶óº¸±â ¶§¹®¿¡,
-zÀÇ ¸Å°³º¯¼ö¸¦ (nearZ, forZ) = (1, 100)À¸·Î ÇÏ¸é
-½ÇÁ¦ ÁÂÇ¥´Â (-1, -100)ÀÌ µÇ°í, ÀÌ ¾ÈÀÇ ¸ðµ¨À» º¼ ¼ö ÀÖÀ½
-glOrtho(-wSize, wSize, -wSize / aspectRatio, wSize / aspectRatio, -100, 0); => z°¡ 100¿¡¼­ 0»çÀÌÀÇ ÁÂÇ¥°ª ¾ÈÀÇ ¸ðµ¨À» º¸¿©ÁÜ
-glOrtho(-wSize * aspectRatio, wSize * aspectRatio, -wSize, wSize, 0, 100);  => z°¡ 0¿¡¼­ -100»çÀÌÀÇ ÁÂÇ¥°ª ¾ÈÀÇ ¸ðµ¨À» º¸¿©ÁÜ
+ì„¸ë¡œê°€ ë” ê¸¸ë©´ yì¶• í™•ìž¥
+ì¹´ë©”ë¼ëŠ” ê¸°ë³¸ì ìœ¼ë¡œ z=0ì—ì„œ -zì¶•ìœ¼ë¡œ ë°”ë¼ë³´ê¸° ë•Œë¬¸ì—,
+zì˜ ë§¤ê°œë³€ìˆ˜ë¥¼ (nearZ, forZ) = (1, 100)ìœ¼ë¡œ í•˜ë©´
+ì‹¤ì œ ì¢Œí‘œëŠ” (-1, -100)ì´ ë˜ê³ , ì´ ì•ˆì˜ ëª¨ë¸ì„ ë³¼ ìˆ˜ ìžˆìŒ
+glOrtho(-wSize, wSize, -wSize / aspectRatio, wSize / aspectRatio, -100, 0); => zê°€ 100ì—ì„œ 0ì‚¬ì´ì˜ ì¢Œí‘œê°’ ì•ˆì˜ ëª¨ë¸ì„ ë³´ì—¬ì¤Œ
+glOrtho(-wSize * aspectRatio, wSize * aspectRatio, -wSize, wSize, 0, 100);  => zê°€ 0ì—ì„œ -100ì‚¬ì´ì˜ ì¢Œí‘œê°’ ì•ˆì˜ ëª¨ë¸ì„ ë³´ì—¬ì¤Œ
 */
 
 /*
 glOrtho(-wSize, wSize, -wSize / aspectRatio, wSize / aspectRatio, -50, 50);
-ÀÌ·¸°Ô ÇÏ¸é Á¡µéÀÌ ´Ù ¾Èº¸ÀÌ´Â ÀÌÀ¯´Â
-glVertex3d(x, y, z);¿¡¼­ z°ªÀÌ -50 ~ 50 À§Ä¡¿¡ ÂïÈù´ÙÇØµµ,
-glRotated();¸¦ ÅëÇØ ±×·ÁÁú ÁÂÇ¥°è¸¦ È¸Àü½ÃÄ×±â ¶§¹®¿¡
-½ÇÁ¦ z°ªÀº -50º¸´Ù ´õ ÀÛ¾îÁ³°Å³ª, ½ÇÁ¦ z°ªº¸´Ù ´õ Ä¿Á³±â ¶§¹®ÀÌ´Ù.
+ì´ë ‡ê²Œ í•˜ë©´ ì ë“¤ì´ ë‹¤ ì•ˆë³´ì´ëŠ” ì´ìœ ëŠ”
+glVertex3d(x, y, z);ì—ì„œ zê°’ì´ -50 ~ 50 ìœ„ì¹˜ì— ì°ížŒë‹¤í•´ë„,
+glRotated();ë¥¼ í†µí•´ ê·¸ë ¤ì§ˆ ì¢Œí‘œê³„ë¥¼ íšŒì „ì‹œì¼°ê¸° ë•Œë¬¸ì—
+ì‹¤ì œ zê°’ì€ -50ë³´ë‹¤ ë” ìž‘ì–´ì¡Œê±°ë‚˜, ì‹¤ì œ zê°’ë³´ë‹¤ ë” ì»¤ì¡Œê¸° ë•Œë¬¸ì´ë‹¤.
+*/
+
+/*
+## glBegin/â€‹glEnd í—ˆìš© ë¦¬ìŠ¤íŠ¸
+
+OpenGL ëª…ì„¸ìƒ glBegin() ì•ˆì—ì„œëŠ”
+- glVertex*()
+- glColor*()
+- glTexCoord*()
+- glNormal*()
+ë“± ë²„í…ìŠ¤ ê´€ë ¨ ì†ì„± ì„¤ì • í•¨ìˆ˜ë§Œ í˜¸ì¶œí•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+
+ë°˜ë©´, glPointSize, glEnable, glMatrixMode ê°™ì€ ìƒíƒœ ì„¤ì •(state setting) í•¨ìˆ˜ëŠ” ê¸ˆì§€ë˜ì–´ ìžˆì£ .
 */
