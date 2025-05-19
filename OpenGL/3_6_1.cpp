@@ -7,15 +7,14 @@ void RenderScene(void) {
 
     glClear(GL_COLOR_BUFFER_BIT);
 
-    // 폴리곤 사각형 그리기(3_6_1)
+    // 폴리곤 사각형 그리기(3_6)
     // 마지막 두 점을 기준으로 삼각형이 그려지는 것을 유의
     glColor3f(1.0f, 0.0f, 0.0f);
     glBegin(GL_TRIANGLE_STRIP);
-    glVertex2f(0, 0);
-    glVertex2f(50, 0);
-    glVertex2f(50, 50);
-    glVertex2f(0, 50);
-    glVertex2f(50, 100);
+        glVertex2f(0, 0);
+        glVertex2f(0, 50);
+        glVertex2f(50, 0);
+        glVertex2f(50, 50);
     glEnd();
 
 
