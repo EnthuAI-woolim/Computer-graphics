@@ -4,7 +4,6 @@
 #include <iostream>
 
 #define GL_PI 3.1415f
-bool bCull = true;
 
 void RenderScene(void) {
 
@@ -12,25 +11,13 @@ void RenderScene(void) {
 
     glClear(GL_COLOR_BUFFER_BIT);
 
-    if (bCull) {
-        glEnable(GL_CULL_FACE); // 오브젝트 뒤에가 보이지 않도록 하는 기능
-    }
-    else {
-        glDisable(GL_CULL_FACE);
-    }
-
-
     glColor3f(0.0f, 1.0f, 0.0f);
     glBegin(GL_TRIANGLE_FAN);
     glVertex2d(0, 0);
     int idx = 0;
     for (angle = 0.0f; angle <= (2.0f * GL_PI); angle += (GL_PI / 8.0f)) { // π 라디안이 180°이므로, π/8은 22.5
-        // 시계반대방향(전면방향): glEnable(GL_CULL_FACE)해도 보임
         x = 50.0f * cos(angle);
         y = 50.0f * sin(angle);
-        // 시계방향(후면방향): glEnable(GL_CULL_FACE)하면 안보임
-        // x = 50.0f * sin(angle);
-        // y = 50.0f * cos(angle);
         if (idx % 2 == 0) glColor3f(0.0f, 1.0f, 0.0f);
         else glColor3f(1.0f, 0.0f, 0.0f);
 
@@ -82,10 +69,3 @@ int main(int argc, char** argv) {
     glutReshapeFunc(ChangeSize);
     glutMainLoop();
 }
-
-/*
-GL_CULL_FACE
-: 오브젝트 뒤에가 안보이지 않도록 하는 기능
-
-
-*/
