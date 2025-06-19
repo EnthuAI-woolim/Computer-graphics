@@ -52,18 +52,18 @@ void RenderScene(void) {
     glClear(GL_COLOR_BUFFER_BIT);
 
     if (bCull) {
-        glEnable(GL_CULL_FACE); // ¿ÀºêÁ§Æ® µÚ¿¡°¡ º¸ÀÌÁö ¾Êµµ·Ï ÇÏ´Â ±â´É
+        glEnable(GL_CULL_FACE); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
     }
     else {
         glDisable(GL_CULL_FACE);
     }
 
     glPushMatrix();
-    // ¹æÇâÅ° ´­·¶À» °æ¿ì È¸Àü
+    // ï¿½ï¿½ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ È¸ï¿½ï¿½
     glRotatef(xRot, 1.0f, 0.0f, 0.0f);
     glRotatef(yRot, 0.0f, 1.0f, 0.0f);
 
-    // a,d: xÃàÀÌµ¿, w,x: yÃàÀÌµ¿ 
+    // a,d: xï¿½ï¿½ï¿½Ìµï¿½, w,x: yï¿½ï¿½ï¿½Ìµï¿½ 
     glTranslatef(xTran, yTran, 0.0f);
 
 
@@ -71,15 +71,15 @@ void RenderScene(void) {
     glColor3f(0.0f, 1.0f, 0.0f);
     glVertex2d(0, 0);
     int idx = 0;
-    for (angle = 0.0f; angle <= (2.0f * GL_PI); angle += (GL_PI / 8.0f)) { // ¥ð ¶óµð¾ÈÀÌ 180¡ÆÀÌ¹Ç·Î, ¥ð/8Àº 22.5
-        // ½Ã°è¹Ý´ë¹æÇâ(Àü¸é¹æÇâ): glEnable(GL_CULL_FACE)ÇØµµ º¸ÀÓ
-        x = 50.0f * cos(angle);
-        y = 50.0f * sin(angle);
-        // ½Ã°è¹æÇâ(ÈÄ¸é¹æÇâ): glEnable(GL_CULL_FACE)ÇÏ¸é ¾Èº¸ÀÓ
+    for (angle = 0.0f; angle <= (2.0f * GL_PI); angle += (GL_PI / 8.0f)) { // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 180ï¿½ï¿½ï¿½Ì¹Ç·ï¿½, ï¿½ï¿½/8ï¿½ï¿½ 22.5
+        // ï¿½Ã°ï¿½Ý´ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½): glEnable(GL_CULL_FACE)ï¿½Øµï¿½ ï¿½ï¿½ï¿½ï¿½
+        x = 50.0f * sin(angle);
+        y = 50.0f * cos(angle);
+        // ï¿½Ã°ï¿½ï¿½ï¿½ï¿½(ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½): glEnable(GL_CULL_FACE)ï¿½Ï¸ï¿½ ï¿½Èºï¿½ï¿½ï¿½
         // x = 50.0f * sin(angle);
         // y = 50.0f * cos(angle);
-        if (idx % 2 == 0) glColor3f(0.0f, 1.0f, 0.0f);
-        else glColor3f(1.0f, 0.0f, 0.0f);
+        if (idx % 2 == 0) glColor3f(1.0f, 0.0f, 0.0f);
+        else glColor3f(0.0f, 1.0f, 0.0f);
 
         glVertex2d(x, y);
         idx++;
@@ -90,12 +90,12 @@ void RenderScene(void) {
     glColor3f(0.0f, 0.0f, 1.0f);
     glVertex3d(0, 0, 80.0f);
     idx = 0;
-    for (angle = 0.0f; angle <= (2.0f * GL_PI); angle += (GL_PI / 8.0f)) { // ¥ð ¶óµð¾ÈÀÌ 180¡ÆÀÌ¹Ç·Î, ¥ð/8Àº 22.5
-        x = 50.0f * sin(angle);
-        y = 50.0f * cos(angle);
+    for (angle = 0.0f; angle <= (2.0f * GL_PI); angle += (GL_PI / 8.0f)) { // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 180ï¿½ï¿½ï¿½Ì¹Ç·ï¿½, ï¿½ï¿½/8ï¿½ï¿½ 22.5
+        x = 50.0f * cos(angle);
+        y = 50.0f * sin(angle);
 
-        if (idx % 2 == 0) glColor3f(0.0f, 1.0f, 0.0f);
-        else glColor3f(1.0f, 0.0f, 0.0f);
+        if (idx % 2 == 0) glColor3f(1.0f, 0.0f, 0.0f);
+        else glColor3f(0.0f, 1.0f, 0.0f);
 
         glVertex3d(x, y, 0);
         idx++;
@@ -151,7 +151,7 @@ int main(int argc, char** argv) {
 
 /*
 GL_CULL_FACE
-: ¿ÀºêÁ§Æ® µÚ¿¡°¡ ¾Èº¸ÀÌÁö ¾Êµµ·Ï ÇÏ´Â ±â´É
+: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½Èºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
 
 
 */
